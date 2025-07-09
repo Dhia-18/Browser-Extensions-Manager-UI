@@ -1,0 +1,260 @@
+@font-face {
+    font-family: "Noto Sans";
+    src: url("assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf");
+    font-weight: 400 700;
+}
+
+:root {
+  --text-color: hsl(226, 11%, 37%);
+  --title-color: hsl(227, 75%, 14%);
+  --border-color: hsl(0, 0%, 93%);
+  --body-bg-color: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+  --button-bg-color: hsl(3, 77%, 44%);
+  --switch-theme-bg-color: hsl(0, 0%, 93%);
+  --switch-on-color: hsl(3, 77%, 44%);
+  --component-bg-color: hsl(200, 60%, 99%);
+}
+
+.darkmode{
+    --title-color: hsl(200, 60%, 99%);
+    --text-color: hsl(226, 11%, 75%);
+    --border-color: hsl(0, 0%, 43%);
+    --body-bg-color: linear-gradient(180deg, #040918 0%, #091540 100%);
+    --button-bg-color: hsl(3, 71%, 56%);
+    --switch-theme-bg-color: hsl(225, 23%, 24%);
+    --switch-on-color: hsl(3, 86%, 64%);
+    --component-bg-color: hsl(226, 25%, 17%);
+}
+
+/* General styling */
+
+*{
+    font-family: "Noto Sans";
+    margin: 0;
+    padding: 0;
+}
+
+p{
+    color: var(--text-color);
+}
+
+h1{
+    color: var(--title-color);
+}
+
+h2{
+    color: var(--title-color);
+    font-size: 20px;
+}
+
+button{
+    cursor: pointer;
+    padding: 5px 12px;
+    color: var(--title-color);
+    background-color: var(--component-bg-color);
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+body{
+    min-height: 1000px;
+    background: var(--body-bg-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 16px;
+}
+
+/* Styling the header */
+
+header{
+    background-color: var(--component-bg-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.darkmode header{
+    border: none;
+}
+
+#logo img:last-child{
+    display: none;
+}
+
+.darkmode #logo img:first-child{
+    display: none;
+}
+
+.darkmode #logo img:last-child{
+    display: block;
+}
+
+#switch-theme-btn{
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--switch-theme-bg-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#switch-theme-btn img:last-child{
+    display: none;
+}
+
+.darkmode #switch-theme-btn img:first-child{
+    display: none;
+}
+
+.darkmode #switch-theme-btn img:last-child{
+    display: block;
+}
+
+/* Styling the main */
+
+.main-header{
+    text-align: center;
+    margin: 32px 0;
+}
+
+.buttons-container{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons-container button{
+    border: 1px solid var(--border-color);
+}
+
+.buttons-container button.active{
+    background-color: var(--button-bg-color);
+    color: white;
+}
+
+.buttons-container button:hover{
+    opacity: 0.5;
+}
+
+/* Styling the extension container */
+
+.extensions-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.extension{
+    max-width: 335px;
+    height: 150px;
+    padding: 16px;
+    background-color: var(--component-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.description{
+    display: flex;
+    gap: 16px;
+}
+
+.description img{
+    align-self: flex-start;
+}
+
+.extension-buttons{
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-btn{
+    border: 1px solid var(--border-color);
+}
+
+.remove-btn:hover,
+.remove-btn:focus{
+    background-color: var(--button-bg-color);
+    color: hsl(200, 60%, 99%);
+}
+
+/* Styling the switch */
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 22px;
+}
+
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-theme-bg-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before{
+    position: absolute;
+    border-radius: 50%;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch input:checked + .slider{
+    background-color: var(--switch-on-color);
+}
+
+.switch input:checked + .slider:before{
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+
+@media screen and (min-width: 750px){
+    body{
+        margin: 16px 150px;
+    }
+
+    .main-header{
+        display: flex;
+        justify-content: space-between;
+        margin: 50px 0 32px 0;
+    }
+
+    .extensions-container{
+        flex-direction: row;
+    }
+}
